@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     { KC_ESC,                KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10,       KC_F11,  KC_F12,  TO(GAME_LAYER), XXXXXXX, XXXXXXX },
     { KC_GRV ,               KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,   KC_7,    KC_8,    KC_9,    KC_0,         KC_MINS, KC_EQL,  XXXXXXX,        KC_BSPC, KC_DEL },
     { KC_TAB,                KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,   KC_U,    KC_I,    KC_O,    KC_P,         KC_LBRC, KC_RBRC, XXXXXXX,        KC_END,  KC_MPLY },
-    { LT(UC_LAYER, KC_CAPS), KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,   KC_J,    KC_K,    KC_L,    KC_SCLN,      KC_QUOT, KC_NUHS, KC_ENT,         KC_PGUP, KC_MUTE },
+    { LT(UC_LAYER, KC_ESC),  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,   KC_J,    KC_K,    KC_L,    KC_SCLN,      KC_QUOT, KC_NUHS, KC_ENT,         KC_PGUP, KC_MUTE },
     { KC_LSFT,               _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_N,    KC_M,    KC_COMM, KC_DOT,       KC_SLSH, KC_RSFT, KC_UP,          KC_PGDN, XXXXXXX },
     { KC_LCTL,               KC_LGUI, KC_LALT, XXXXXXX, XXXXXXX, XXXXXXX, KC_SPC, XXXXXXX, XXXXXXX, XXXXXXX, MO(FN_LAYER), KC_RGUI, KC_LEFT, KC_DOWN,        KC_RGHT, XXXXXXX }
   },
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     { _______, UC_LINX, UC_MAC,  UC_WINC, _______, _______, _______, _______, _______, _______, _______, _______, _______, TO(BASE_LAYER), _______, _______ },
     { _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,        _______, _______ },
     { _______, _______, _______, _______, _______, _______, _______, U_UE,    _______, U_OE,    _______, _______, _______, _______,        _______, _______ },
-    { KC_CAPS, U_AE,    U_SS,    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,        _______, _______ },
+    { KC_ESC,  U_AE,    U_SS,    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,        _______, _______ },
     { _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,        _______, _______ },
     { _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,        _______, _______ }
   },
@@ -337,11 +337,11 @@ static void print_unicode_mode(void) {
     }
 }
 
-static void print_caps_status(void) {
-    led_t led_state = host_keyboard_led_state();
-    oled_set_cursor(0, 1);
-    oled_write_P(led_state.caps_lock ? PSTR("CAPS") : PSTR("    "), false);
-}
+// static void print_caps_status(void) {
+//     led_t led_state = host_keyboard_led_state();
+//     oled_set_cursor(0, 1);
+//     oled_write_P(led_state.caps_lock ? PSTR("CAPS") : PSTR("    "), false);
+// }
 
 // static void print_wpm(void) {
 //     uint8_t wpm = get_current_wpm();
@@ -354,7 +354,7 @@ bool oled_task_user(void) {
 
     print_layer_name();
     print_unicode_mode();
-    print_caps_status();
+    // print_caps_status();
     // print_wpm();
 
     return false;
